@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\főoldal;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/', function () {
 Route::get('/fooldal', function () {
     return view('fooldal');
 });
+
+
+Route::get('főoldal',[főoldal::class,"FŐOLDAL"]);

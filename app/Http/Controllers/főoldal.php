@@ -9,6 +9,13 @@ class főoldal extends Controller
 {
     public function FŐOLDAL(){
 
+        $hazifdr=DB::select("SELECT * FROM hazifdr");
+
         return view("fooldal");
+    }
+
+    public function RÖGZÍTÉS(){
+
+        
     }
 }

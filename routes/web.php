@@ -24,3 +24,4 @@ Route::get('/fooldal', function () {
 
 
 Route::get('főoldal',[főoldal::class,"FŐOLDAL"]);
+Route::post('/fooldal',[főoldal::class,"RÖGZÍTÉS"]);

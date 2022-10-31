@@ -14,24 +14,44 @@
 <body>
     <form method=POST>
         @csrf
+        @if (session()->get('Kész'))
+    <div class="alert alert-success">
+        {{session()->get('Kész')}}
+    </div>            
+        @endif
         <div class="container-fluid bg-success text-dark">
     <h1>HÁZIDOLGOZAT Fehér Dávid Róbert</h1>
 
 <div class="row my-4">
     <div class="col">
-        <input type="text id="vezeteknev" name="vezeteknev" placeholder="Vezetéknév" class="form-controll" value="{{old('vezeteknev')}}">
+        <input type="text" id="vezeteknev" name="vezeteknev" placeholder="Vezetéknév" class="form-controll" value="{{old('vezeteknev')}}">
+        @error('vezeteknev')
+            <div class="alert alert-danger">
+                {{$message}}
+            </div>
+        @enderror
     </div>
 </div>
 
 <div class="row my-4">
     <div class="col">
         <input type="text" id="keresztnev" name="keresztnev" placeholder="Keresztnév" class="form-controll" value="{{old('keresztnev')}}">
+        @error('keresztnev')
+        <div class="alert alert-danger">
+            {{$message}}
+        </div>
+    @enderror
     </div>
 </div>
 
 <div class="row my-4">
     <div class="col">
         <input type="date" name="szuletesiev" id="szuletesiev" class="form-controll" value="{{old('szuletesiev')}}">
+        @error('szuletesiev')
+        <div class="alert alert-danger">
+            {{$message}}
+        </div>
+    @enderror
     </div>
 </div>
 

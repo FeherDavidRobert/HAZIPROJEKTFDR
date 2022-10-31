@@ -9,16 +9,16 @@ class főoldal extends Controller
 {
     public function FŐOLDAL(){
 
-        $hazifdr=DB::select("SELECT * FROM hazifdr");
 
         return view("fooldal");
     }
 
-    public function RÖGZÍTÉS(Request $req){
+    public function RÖGZÍTÉS(Request $req)
+    {
 
-        return view("fooldal");
 
-        $req->validate(
+        $req->validate
+        (
             [
                     "vezeteknev"=>"required|min:1|max:20",
                     "keresztnev"=>"required|min:1|max:20",
@@ -31,9 +31,11 @@ class főoldal extends Controller
                 "keresztnev.required"=>"A mező kitöltése kötelező",
                 "keresztnev.min"=>"Minimum 1 karakter",
                 "keresztnev.max"=>"Maximum 20 karakter",
-                "szuletesiev.required"=>"A mező kitöltése kötelező",
-            ]
+                "szuletesiev.required"=>"A mező kitöltése kötelező"
+            ]);
 
-        )
+            DB::insert("INSERT INTO `hazifdr`(`vezeteknev`, `keresztnev`, `szuletesiev`) VALUES (?,?,?)",[$req->get('vezeteknev'),$req->get('keresztnev'),$req->get('szuletesiev')]);
+
+            return redirect("/fooldal")->with("Kész", "Az adatok bevitele sikeres");
     }
 }
